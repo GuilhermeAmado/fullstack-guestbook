@@ -17,7 +17,7 @@ const Navbar = () => {
       minWidth="max-content"
       alignItems="center"
       gap="2"
-      backgroundColor="blackAlpha.200"
+      backgroundColor="blackAlpha.400"
       boxShadow="md"
     >
       <Box>
@@ -25,10 +25,10 @@ const Navbar = () => {
       </Box>
       <Spacer />
       <ButtonGroup gap="2">
-        <Button variant="outline" colorScheme="purple">
+        <Button variant="outline" colorScheme="pink">
           Sign Up
         </Button>
-        <Button variant="outline" colorScheme="teal">
+        <Button variant="outline" colorScheme="pink">
           Log in
         </Button>
       </ButtonGroup>

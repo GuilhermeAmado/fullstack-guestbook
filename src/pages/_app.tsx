@@ -3,11 +3,21 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { httpBatchLink } from '@trpc/client/links/httpBatchLink';
 import { loggerLink } from '@trpc/client/links/loggerLink';
 import { withTRPC } from '@trpc/next';
+import { NextPage } from 'next';
 import { SessionProvider } from 'next-auth/react';
 import type { AppType } from 'next/dist/shared/lib/utils';
+import { ReactElement, ReactNode } from 'react';
 import superjson from 'superjson';
+import Layout from '../components/Layout';
 import type { AppRouter } from '../server/router';
 import { chakraTheme } from '../styles/chakraTheme';
+
+export type NextPageWithLayout<P = Record<string, unknown>, IP = P> = NextPage<
+  P,
+  IP
+> & {
+  getLayout?: (page: ReactElement) => ReactNode;
+};
 
 const MyApp: AppType = ({
   Component,
@@ -16,7 +26,9 @@ const MyApp: AppType = ({
   return (
     <SessionProvider session={session}>
       <ChakraProvider theme={chakraTheme}>
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </ChakraProvider>
     </SessionProvider>
   );

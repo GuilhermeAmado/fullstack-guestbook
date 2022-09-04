@@ -1,6 +1,13 @@
 import { extendTheme } from '@chakra-ui/react';
+import '@fontsource/prompt';
+
+const config = {
+  initialColorMode: 'dark',
+  useSystemColorMode: false,
+};
 
 export const chakraTheme = extendTheme({
+  ...config,
   styles: {
     global: {
       'html, body': {
@@ -9,6 +16,10 @@ export const chakraTheme = extendTheme({
         height: '100vh',
       },
     },
+  },
+  fonts: {
+    heading: `"Prompt", sans-serif`,
+    body: `"Prompt", sans-serif`,
   },
   colors: {
     purple: {
@@ -47,7 +58,7 @@ export const chakraTheme = extendTheme({
       800: '#052044',
       900: '#00091c',
     },
-    pink: {
+    brandPink: {
       50: '#ffe4ef',
       100: '#fcb9cb',
       200: '#f48ca5',
@@ -58,6 +69,14 @@ export const chakraTheme = extendTheme({
       700: '#730933',
       800: '#470322',
       900: '#1f000e',
+    },
+  },
+  components: {
+    Button: {
+      defaultProps: {
+        variant: 'ghost',
+        colorScheme: 'brandPink',
+      },
     },
   },
 });

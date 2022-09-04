@@ -927,6 +927,11 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
+"@fontsource/prompt@^4.5.9":
+  version "4.5.9"
+  resolved "https://registry.yarnpkg.com/@fontsource/prompt/-/prompt-4.5.9.tgz#d07939660612c0e1ff0f23ecf5fa77dfa248e097"
+  integrity sha512-9ied7dORpTIp4KOtTsaFucT5stJJXfelaspHlcjQS+Oi3XbwBM5aiWgWCUjdiYX3Vbp25J+ZpEgs0rTb+1+Oxw==
+
 "@humanwhocodes/config-array@^0.10.4":
   version "0.10.4"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.10.4.tgz#01e7366e57d2ad104feea63e72248f22015c520c"

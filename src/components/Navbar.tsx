@@ -25,12 +25,8 @@ const Navbar = () => {
       </Box>
       <Spacer />
       <ButtonGroup gap="2">
-        <Button variant="outline" colorScheme="pink">
-          Sign Up
-        </Button>
-        <Button variant="outline" colorScheme="pink">
-          Log in
-        </Button>
+        <Button bg="whiteAlpha.100">Sign Up</Button>
+        <Button bg="whiteAlpha.100">Log in</Button>
       </ButtonGroup>
     </Flex>
   );

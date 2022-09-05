@@ -1,8 +1,5 @@
 // pages/_document.tsx
-
 import NextDocument, { Html, Head, Main, NextScript } from 'next/document';
-import { ColorModeScript } from '@chakra-ui/react';
-import { chakraTheme } from '../styles/chakraTheme';
 
 export default class Document extends NextDocument {
   render() {
@@ -14,9 +11,6 @@ export default class Document extends NextDocument {
         </Head>
 
         <body>
-          <ColorModeScript
-            initialColorMode={chakraTheme.config.initialColorMode}
-          />
           <Main />
           <NextScript />
         </body>

@@ -6,9 +6,14 @@ import {
   Heading,
   Spacer,
 } from '@chakra-ui/react';
+import { signIn, signOut, useSession } from 'next-auth/react';
 import React from 'react';
 
 const Navbar = () => {
+  const session = useSession();
+
+  if (session.status === 'loading') return null;
+
   return (
     <Flex
       as="header"
@@ -24,10 +29,21 @@ const Navbar = () => {
         <Heading size="md">Guestbook</Heading>
       </Box>
       <Spacer />
-      <ButtonGroup gap="2">
-        <Button bg="whiteAlpha.100">Sign Up</Button>
-        <Button bg="whiteAlpha.100">Log in</Button>
-      </ButtonGroup>
+      {!session.data && (
+        <ButtonGroup gap="2">
+          <Button bg="whiteAlpha.100">Sign Up</Button>
+          <Button onClick={() => signIn('discord')} bg="whiteAlpha.100">
+            Log in
+          </Button>
+        </ButtonGroup>
+      )}
+      {session.data && (
+        <ButtonGroup gap="2">
+          <Button onClick={() => signOut()} bg="whiteAlpha.100">
+            Sign Out
+          </Button>
+        </ButtonGroup>
+      )}
     </Flex>
   );
 };

@@ -1,13 +1,14 @@
-import { extendTheme } from '@chakra-ui/react';
-import '@fontsource/prompt';
+import { extendTheme, ThemeConfig } from '@chakra-ui/react';
 
 const config = {
   initialColorMode: 'dark',
   useSystemColorMode: false,
 };
 
-export const chakraTheme = extendTheme({
-  ...config,
+export const chakraTheme: ThemeConfig = extendTheme({
+  config: {
+    ...config,
+  },
   styles: {
     global: {
       'html, body': {

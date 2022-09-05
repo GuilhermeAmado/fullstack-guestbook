@@ -10,7 +10,9 @@ import { ReactElement, ReactNode } from 'react';
 import superjson from 'superjson';
 import Layout from '../components/Layout';
 import type { AppRouter } from '../server/router';
-import { chakraTheme } from '../styles/chakraTheme';
+import { chakraTheme } from '../chakraTheme';
+import '@fontsource/prompt';
+import { Chakra } from '../lib/Chakra';
 
 export type NextPageWithLayout<P = Record<string, unknown>, IP = P> = NextPage<
   P,
@@ -25,11 +27,11 @@ const MyApp: AppType = ({
 }) => {
   return (
     <SessionProvider session={session}>
-      <ChakraProvider theme={chakraTheme}>
+      <Chakra cookies={pageProps.cookies}>
         <Layout>
           <Component {...pageProps} />
         </Layout>
-      </ChakraProvider>
+      </Chakra>
     </SessionProvider>
   );
 };

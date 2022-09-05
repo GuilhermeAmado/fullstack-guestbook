@@ -13,7 +13,6 @@ type ChakraProps = {
 };
 
 export function Chakra({ cookies, children }: ChakraProps) {
-  // b) Pass `colorModeManager` prop
   const colorModeManager =
     typeof cookies === 'string'
       ? cookieStorageManagerSSR(cookies)

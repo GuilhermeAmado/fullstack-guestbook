@@ -12,8 +12,6 @@ import React from 'react';
 const Navbar = () => {
   const session = useSession();
 
-  if (session.status === 'loading') return null;
-
   return (
     <Flex
       as="header"

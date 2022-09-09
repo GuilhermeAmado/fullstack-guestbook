@@ -10,7 +10,6 @@ import { ReactElement, ReactNode } from 'react';
 import superjson from 'superjson';
 import Layout from '../components/Layout';
 import type { AppRouter } from '../server/router';
-import { chakraTheme } from '../chakraTheme';
 import '@fontsource/prompt';
 import { Chakra } from '../lib/Chakra';
 

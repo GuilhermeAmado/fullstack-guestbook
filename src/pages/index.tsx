@@ -1,10 +1,11 @@
 import { Box } from '@chakra-ui/react';
 import type { NextPage } from 'next';
+import { useSession } from 'next-auth/react';
 import Head from 'next/head';
 import { trpc } from '../utils/trpc';
 
 const Home: NextPage = () => {
-  const { data } = trpc.useQuery(['example.hello', { text: 'from tRPC' }]);
+  const { data } = trpc.useQuery(['users.getAllUsernames']);
 
   return (
     <>
@@ -14,7 +15,9 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.png" />
       </Head>
       <Box minWidth="max-content">
-        <div>{data ? <p>{data.greeting}</p> : <p>Loading...</p>}</div>
+        {!data && <p>loading...</p>}
+        {data?.length &&
+          data.map((user) => <p key={user.username}>{user.username}</p>)}
       </Box>
     </>
   );

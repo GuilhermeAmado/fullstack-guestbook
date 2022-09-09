@@ -43,10 +43,7 @@ const Navbar = () => {
           {session.status === 'loading' && <Spinner />}
           {session.status !== 'loading' && !session.data && (
             <ButtonGroup gap="2">
-              <Button
-                bg="whiteAlpha.100"
-                onClick={() => router.push('/anonymous')}
-              >
+              <Button bg="whiteAlpha.100" onClick={() => router.push('/enter')}>
                 Anonymous Login
               </Button>
               <Button onClick={onOpen} bg="whiteAlpha.100">

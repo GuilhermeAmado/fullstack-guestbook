@@ -71,6 +71,18 @@ export const chakraTheme: ThemeConfig = extendTheme({
       800: '#470322',
       900: '#1f000e',
     },
+    discord: {
+      50: '#e8eeff',
+      100: '#c0ccf3',
+      200: '#99aae5',
+      300: '#7289da',
+      400: '#4a67ce',
+      500: '#314db5',
+      600: '#253c8d',
+      700: '#1a2b66',
+      800: '#0d1a40',
+      900: '#01091b',
+    },
   },
   components: {
     Button: {

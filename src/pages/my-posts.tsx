@@ -24,6 +24,7 @@ import { BsArrowRightSquareFill } from 'react-icons/bs';
 
 const AnonymousPage = () => {
   const [value, setValue] = useState('');
+  const createPost = trpc.useMutation(['posts.createPost']);
 
   return (
     <>
@@ -76,6 +77,12 @@ const AnonymousPage = () => {
             _loading={{
               fontSize: '12px',
             }}
+            onClick={() =>
+              createPost.mutate({
+                slug: 'test-post',
+                content: 'this is the post content',
+              })
+            }
           >
             Submit Post
           </Button>

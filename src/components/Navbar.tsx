@@ -11,7 +11,7 @@ import {
   Text,
   useDisclosure,
 } from '@chakra-ui/react';
-import { signIn, signOut, useSession } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import React from 'react';
 import AuthModal from './AuthModal';
@@ -53,12 +53,25 @@ const Navbar = () => {
           )}
           {session.data && (
             <ButtonGroup gap="2">
-              <Flex alignItems="center" gap="8px">
+              <Flex
+                alignItems="center"
+                gap="8px"
+                cursor="pointer"
+                onClick={() => router.push('/my-posts')}
+              >
                 <Avatar size="sm" src={session.data.user?.image ?? ''}></Avatar>
                 <Text>
                   {session.data.user?.username || session.data.user?.name}
                 </Text>
               </Flex>
+
+              <Button
+                variant="solid"
+                colorScheme="blue"
+                onClick={() => router.push('/my-posts')}
+              >
+                New Post
+              </Button>
               <Button onClick={() => signOut()} bg="whiteAlpha.100">
                 Sign Out
               </Button>

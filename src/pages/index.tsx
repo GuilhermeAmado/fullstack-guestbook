@@ -25,11 +25,15 @@ const Home: NextPage = () => {
           gap="24px"
           marginBottom="64px"
         >
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
+          {data &&
+            data.map((post) => (
+              <PostCard
+                key={post.id}
+                authorUsername={post.author.username}
+                postTitle={post.title}
+                postContent={post.content}
+              />
+            ))}
         </Flex>
       </Box>
     </>

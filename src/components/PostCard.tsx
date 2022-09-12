@@ -1,8 +1,18 @@
-import { Box, Flex, HStack, Icon, Text } from '@chakra-ui/react';
+import { Box, Flex, Heading, HStack, Icon, Text } from '@chakra-ui/react';
 import React from 'react';
 import { FiHeart } from 'react-icons/fi';
 
-const PostCard = () => {
+type PostCardProps = {
+  authorUsername: string | null;
+  postTitle: string;
+  postContent: string;
+};
+
+const PostCard = ({
+  authorUsername,
+  postTitle,
+  postContent,
+}: PostCardProps) => {
   return (
     <Flex
       width="100%"
@@ -24,15 +34,10 @@ const PostCard = () => {
         color="purple.900"
         borderRadius="md"
       >
-        @guilhermeamado
+        {`@${authorUsername}`}
       </Text>
-      <Text>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni placeat
-        inventore architecto aliquam aspernatur quo. At voluptatem laborum minus
-        vitae dicta et dolorum, recusandae, dolor obcaecati, similique illo
-        soluta ratione sapiente. Ducimus, accusamus eaque deleniti cum aut
-        laboriosam odio ea dolores quas, minus quam beatae.
-      </Text>
+      <Heading fontSize="md">{postTitle}</Heading>
+      <Text>{postContent}</Text>
       <HStack alignSelf="flex-end">
         <Icon as={FiHeart} />
         <Text

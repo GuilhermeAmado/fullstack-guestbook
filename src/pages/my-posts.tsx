@@ -1,5 +1,4 @@
 import {
-  Box,
   Button,
   Code,
   Flex,
@@ -8,23 +7,22 @@ import {
   HStack,
   Icon,
   Input,
-  Stack,
-  Tag,
   Text,
   Textarea,
   VStack,
 } from '@chakra-ui/react';
 import Head from 'next/head';
-import React, { useState } from 'react';
-import { FiCheckCircle } from 'react-icons/fi';
+import React, { useRef, useState } from 'react';
 import useDebounce from '../hooks/useDebounce';
 import { slugify } from '../lib/slugFactory';
 import { trpc } from '../utils/trpc';
 import { BsArrowRightSquareFill } from 'react-icons/bs';
 
 const AnonymousPage = () => {
-  const [value, setValue] = useState('');
+  const [postTitle, setPostTitle] = useState('');
   const createPost = trpc.useMutation(['posts.createPost']);
+
+  const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
   return (
     <>
@@ -39,15 +37,15 @@ const AnonymousPage = () => {
             type="text"
             autoComplete="off"
             maxWidth="500px"
-            value={value}
+            value={postTitle}
             maxLength={30}
-            onChange={(e) => setValue(e.target.value)}
+            onChange={(e) => setPostTitle(e.target.value)}
             placeholder="My awesome title"
             size="lg"
           />
         </FormControl>
 
-        <HStack minHeight="18spx">
+        <HStack minHeight="18px">
           <Text
             fontWeight="700"
             fontSize="14px"
@@ -57,10 +55,11 @@ const AnonymousPage = () => {
             Slug
           </Text>
           <Icon as={BsArrowRightSquareFill} />
-          <Code>{slugify(value)}</Code>
+          <Code>{slugify(postTitle)}</Code>
         </HStack>
 
         <Textarea
+          ref={textAreaRef}
           height="300px"
           placeholder="What's on your mind? Start typing!"
         />
@@ -79,8 +78,9 @@ const AnonymousPage = () => {
             }}
             onClick={() =>
               createPost.mutate({
-                slug: 'test-post',
-                content: 'this is the post content',
+                slug: slugify(postTitle),
+                title: postTitle,
+                content: textAreaRef.current?.value ?? '',
               })
             }
           >

@@ -38,7 +38,7 @@ const AnonymousPage = () => {
             autoComplete="off"
             maxWidth="500px"
             value={postTitle}
-            maxLength={30}
+            maxLength={60}
             onChange={(e) => setPostTitle(e.target.value)}
             placeholder="My awesome title"
             size="lg"

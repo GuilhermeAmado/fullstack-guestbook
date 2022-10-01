@@ -38,14 +38,14 @@ const PostCard = ({
       </Text>
       <Heading fontSize="md">{postTitle}</Heading>
       <Text>{postContent}</Text>
-      <HStack alignSelf="flex-end">
+      <HStack
+        alignSelf="flex-end"
+        bg="whiteAlpha.200"
+        borderRadius="md"
+        padding="4px 8px"
+      >
         <Icon as={FiHeart} />
-        <Text
-          fontSize="12px"
-          fontWeight="600"
-          minWidth="30px"
-          textAlign="right"
-        >
+        <Text fontSize="12px" fontWeight="600">
           43
         </Text>
       </HStack>
